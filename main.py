@@ -12,12 +12,15 @@ def main():
 	while True:
 		word += getc()
 
-		c = t.printAutoSugg(word)
+		if '`' in word:
+			break
 
-		if c == -1:
-			print("No other strings found with this prefix")
-		elif c == 0:
-			print("No string found with this prefix")
+		t.getAutoSugg(word)
+
+		top = t.suggestions[-1]
+		print(" "*50,end="\r")
+		print(f"\033[1;97m{top}\r\033[1;36m{word}\033[0m", end ="")
+
 
 if __name__ == '__main__':
 	main()
