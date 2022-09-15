@@ -3,7 +3,16 @@ import getch
 
 
 def iInput(prompt:str, lang:list) -> str:
-	
+	"""
+	iInput
+	function used to autosuggest input to a user based upon words in a given language
+	@param prompt: prompt to be displayed for the input stream
+	@param lang: list containing all words in the language to be used
+	@return: string containing input given by user
+	"""
+
+	#TODO Handle non-ascii inputs such as arrow up/down along with escape codes
+
 	t = trie.Trie()
 	t.formTrie(lang)
 
