@@ -35,6 +35,7 @@ class Trie:
 			self.suggestionRec(n, word + a)
 	
 	def getAutoSugg(self, key):
+		self.suggestions = []
 		node = self.root
 		for c in key:
 			if not node.children.get(c):
