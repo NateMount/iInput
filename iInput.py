@@ -42,6 +42,29 @@ def iInput(prompt:str, lang:list) -> str:
 
 	return rw
 
+def passwdIn(prompt:str, mask:str):
+	
+	cw = ""
+
+	while True:
+
+		cw += getch.getch()
+		msk = mask*len(cw)
+
+		if '\x7f' in cw:
+			cw = cw[:-2]
+
+		if '\r' in cw: 
+			print(" "*50, end='\r')
+			print(f"{prompt}{msk[:-2]}", end="")
+			break
+
+		print(" "*50, end='\r')
+		print(f"{prompt}{msk}", end="")
+
+	print("")
+	return cw
+
 if __name__ == '__main__':
-	x = iInput("", open('words.txt','r').read().split('\n'))
+	x = passwdIn("PASSWORD ", "*") #iInput("", open('words.txt','r').read().split('\n'))
 	print(x)
