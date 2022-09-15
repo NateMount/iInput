@@ -1,7 +1,5 @@
 #! /usr/bin/env python3.10
 
-import sys
-
 class TrieNode:
 	def __init__(self):
 		self.children = {}
@@ -48,6 +46,4 @@ class Trie:
 		self.suggestionRec(node, key)
 
 		return 1
-
-keys = map(lambda x: x.lower(), open('words.txt','r').read().split('\n'))
 
