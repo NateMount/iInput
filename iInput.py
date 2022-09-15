@@ -1,6 +1,5 @@
 import trie
 import getch
-import json
 
 
 def iInput(prompt:str, lang:list) -> str:
@@ -17,6 +16,8 @@ def iInput(prompt:str, lang:list) -> str:
 
 		if '\r' in cw:
 			rw += cw
+			print(' '*50, end='\r')
+			print(f"{prompt}\033[1;97m{rw}{tw}\r\033[1;36m{rw}{cw}\033[0m", end="")
 			break
 
 		if '\t' in cw:
@@ -32,7 +33,7 @@ def iInput(prompt:str, lang:list) -> str:
 
 		t.getAutoSugg(cw)
 
-		tw = "" if len(t.suggestions) <= 1 else t.suggestions[1]
+		tw = "" if len(t.suggestions) <= 1 or len(cw) == 0 else t.suggestions[1]
 
 		print(' '*50, end='\r')
 		print(f"{prompt}\033[1;97m{rw}{tw}\r\033[1;36m{rw}{cw}\033[0m", end="")
@@ -42,5 +43,5 @@ def iInput(prompt:str, lang:list) -> str:
 	return rw
 
 if __name__ == '__main__':
-	x = iInput("", json.load(open('langs.json','r'))['english'])
+	x = iInput("", open('words.txt','r').read().split('\n'))
 	print(x)
