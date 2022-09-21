@@ -1,9 +1,14 @@
 #! /usr/bin/env python3.10
 
+#NOTE may be able to represent TrieNode as a dict {..., isEnd: 0}
+
 class TrieNode:
 	def __init__(self):
 		self.children = {}
 		self.isEnd = False
+
+#NOTE try to add weights to letters on a branch 
+# weight n = len(b.children)
 
 class Trie:
 	def __init__(self):
